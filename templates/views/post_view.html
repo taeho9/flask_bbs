@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container my-3">
+	<h3>포스트 보기</h3>
+	<table class="table table-bordered">
+	<tr class="table-active">
+		<td>순번</td><td>포스트 제목</td><td>발행일자</td>
+	</tr>
+	<tbody>
+	<tr>
+		<td>{{post.id}}</td><td>{{ post.subject }}</td><td>{{ post.posting_date }}</td>
+	</tr>
+	<tr class="table-active">
+		<td colspan=3>내용</td>
+	<tr>
+		<td colspan=3><div id="content"></div>
+			<script language="javascript">
+				var tmpStr = "{{ post.content }}";
+				tmpStr = tmpStr.replaceAll("&lt;", "<");
+				tmpStr = tmpStr.replaceAll("&gt;", ">");
+				tmpStr = tmpStr.replaceAll("&amp;lt;", "<");
+				tmpStr = tmpStr.replaceAll("&amp;gt;", ">");
+				tmpStr = tmpStr.replaceAll("&amp;nbsp;", " ");
+				tmpStr = tmpStr.replaceAll("&amp;amp;", "&");
+				document.getElementById('content').innerHTML=tmpStr;
+			</script>
+		</td>
+	</tr>
+	</tbody>
+	</table>
+	<div class="wrapper">
+	<input type="button" class="btn btn-light" value="목록으로" onclick="location.href='/'">
+	<input type="button" class="btn btn-light" value="수정하기" onclick="location.href='/post_modify/{{post.id}}'">
+	</div>
+</div>
+</body>
+</html>

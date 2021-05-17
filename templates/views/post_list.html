@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container my-3">
+	<h3>포스트 목록</h3>
+	<table class="table">
+		<thead class="thead-dark">
+		<tr>
+			<th>순번</th><th>포스트 제목</th><th>발행일자</th>
+		</tr>
+		</thead>
+		<tbody>
+		{% for post in post_list %}
+		<tr>
+			<td>{{post.id}}</td><td><a href="/post_view/{{post.id}}">{{ post.subject }}</a></td><td>{{ post.posting_date }}</td>
+		</tr>
+		{% endfor %}
+		<tr><td colspan=3 align=right><a href="/post_write">포스트 등록하기</a></td></tr>
+		</tbody>
+	</table>	
+</div>
+</body>
+</html>
